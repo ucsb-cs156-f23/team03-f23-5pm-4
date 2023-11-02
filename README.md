@@ -19,7 +19,7 @@ TODO: Fill in this table with correct information.
 | UCSBOrganization          |   Kendrick   |kendrick-lee|
 | RecommendationRequest     |              |           |
 | MenuItemReview            |              |           |
-| HelpRequest               |              |           |
+| HelpRequest               |     Justin   |francisc0leyva|
 | Articles                  |              |           |
 
 Remember though, that in spite of these initial  assignments, it is still
