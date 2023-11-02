@@ -18,7 +18,7 @@ TODO: Fill in this table with correct information.
 | UCSBDiningCommonsMenuItem |    Arul      | ajs808    |
 | UCSBOrganization          |   Kendrick   |kendrick-lee|
 | RecommendationRequest     |              |           |
-| MenuItemReview            |              |           |
+| MenuItemReview            |   Mitali     |  mitali-g |
 | HelpRequest               |     Justin   |francisc0leyva|
 | Articles                  |              |           |
 
