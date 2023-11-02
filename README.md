@@ -16,7 +16,7 @@ TODO: Fill in this table with correct information.
 | Table                     | Name         | Github Id |
 |---------------------------|--------------|-----------|
 | UCSBDiningCommonsMenuItem |    Arul      | ajs808    |
-| UCSBOrganization          |              |           |
+| UCSBOrganization          |   Kendrick   |kendrick-lee|
 | RecommendationRequest     |              |           |
 | MenuItemReview            |              |           |
 | HelpRequest               |              |           |
