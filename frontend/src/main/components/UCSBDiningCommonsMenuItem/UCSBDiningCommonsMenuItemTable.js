@@ -2,7 +2,7 @@ import React from "react";
 import OurTable, { ButtonColumn } from "main/components/OurTable";
 
 import { useBackendMutation } from "main/utils/useBackend";
-import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/UCSBDateUtils"
+import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/UCSBDiningCommonsMenuItemUtils"
 import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
@@ -11,7 +11,7 @@ export default function UCSBDining({ items, currentUser }) {
     const navigate = useNavigate();
 
     const editCallback = (cell) => {
-        navigate(`/ucsbdates/edit/${cell.row.values.id}`)
+        navigate(`/ucsbdiningcommonsmenuitems/edit/${cell.row.values.id}`)
     }
 
     // Stryker disable all : hard to test for query caching
@@ -19,7 +19,7 @@ export default function UCSBDining({ items, currentUser }) {
     const deleteMutation = useBackendMutation(
         cellToAxiosParamsDelete,
         { onSuccess: onDeleteSuccess },
-        ["/api/ucsbdates/all"]
+        ["/api/ucsbdiningcommonsmenuitems/all"]
     );
     // Stryker restore all 
 
@@ -47,13 +47,13 @@ export default function UCSBDining({ items, currentUser }) {
     ];
 
     if (hasRole(currentUser, "ROLE_ADMIN")) {
-        columns.push(ButtonColumn("Edit", "primary", editCallback, "UCSBDatesTable"));
-        columns.push(ButtonColumn("Delete", "danger", deleteCallback, "UCSBDatesTable"));
+        columns.push(ButtonColumn("Edit", "primary", editCallback, "UCSBDiningCommonsMenuItemTable"));
+        columns.push(ButtonColumn("Delete", "danger", deleteCallback, "UCSBDiningCommonsMenuItemTable"));
     } 
 
     return <OurTable
         data={items}
         columns={columns}
-        testid={"UCSBDatesTable"}
+        testid={"UCSBDiningCommonsMenuItemTable"}
     />;
 };
