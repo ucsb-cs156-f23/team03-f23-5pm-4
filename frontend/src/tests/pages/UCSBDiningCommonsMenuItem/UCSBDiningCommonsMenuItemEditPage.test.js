@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import UCSBDiningCommonsMenuItemIndexPage from "main/pages/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemIndexPage";
+import UCSBDiningCommonsMenuItemEditPage from "main/pages/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemEditPage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 
@@ -30,7 +30,7 @@ describe("UCSBDiningCommonsMenuItemIndexPage tests", () => {
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
-                    <UCSBDiningCommonsMenuItemIndexPage />
+                    <UCSBDiningCommonsMenuItemEditPage />
                 </MemoryRouter>
             </QueryClientProvider>
         );
