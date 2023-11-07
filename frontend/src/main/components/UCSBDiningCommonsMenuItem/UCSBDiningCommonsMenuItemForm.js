@@ -45,6 +45,10 @@ function UCSBDiningCommonsMenuItemForm({ initialContents, submitAction, buttonLa
                     isInvalid={Boolean(errors.name)}
                     {...register("name", {
                         required: "Name is required.",
+                        maxLength : {
+                            value: 30,
+                            message: "Max length 30 characters"
+                        }
                     })}
                 />
                 <Form.Control.Feedback type="invalid">
