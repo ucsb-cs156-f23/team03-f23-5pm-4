@@ -23,7 +23,7 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
     const date_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\D)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
 
     // Stryker disable next-line Regex
-    const done_regex = /^([Tt][Rr][Uu][Ee]|[Ff][^Aa][Ll][Ss][Ee])$/i; 
+    const done_regex = /^([Tt][Rr][Uu][Ee]|[Ff][Aa][Ll][Ss][Ee])$/i; 
 
 
     return (
