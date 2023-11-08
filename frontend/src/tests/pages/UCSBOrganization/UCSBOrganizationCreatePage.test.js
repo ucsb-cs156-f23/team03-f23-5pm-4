@@ -60,7 +60,7 @@ describe("UCSBOrganizationCreatePage tests", () => {
             inactive: "false"
         };
 
-        axiosMock.onPost("/api/organization/post").reply( 202, organization );
+        axiosMock.onPost("/api/ucsborganization/post").reply( 202, organization );
 
         render(
             <QueryClientProvider client={queryClient}>
@@ -100,7 +100,7 @@ describe("UCSBOrganizationCreatePage tests", () => {
         });
 
         expect(mockToast).toBeCalledWith("New organization Created - orgCode: ZPR orgTranslationShort: ZETA PHI RHO orgTranslation: undefined inactive: false");
-        expect(mockNavigate).toBeCalledWith({ "to": "/organization" });
+        expect(mockNavigate).toBeCalledWith({ "to": "/ucsborganization" });
     });
 
 
