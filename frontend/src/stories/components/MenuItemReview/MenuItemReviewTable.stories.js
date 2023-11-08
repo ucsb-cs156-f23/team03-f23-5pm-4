@@ -11,7 +11,7 @@ export default {
 
 const Template = (args) => {
     return (
-        <UCSBDatesTable {...args} />
+        <MenuItemReviewTable {...args} />
     )
 };
 

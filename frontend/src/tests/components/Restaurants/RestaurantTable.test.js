@@ -34,7 +34,7 @@ describe("RestaurantTable tests", () => {
       </QueryClientProvider>
     );
 
-    // assert
+    // assertnpm 
     expectedHeaders.forEach((headerText) => {
       const header = screen.getByText(headerText);
       expect(header).toBeInTheDocument();
