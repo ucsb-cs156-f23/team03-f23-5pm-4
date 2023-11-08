@@ -1,4 +1,4 @@
-const organizationFixtures = {
+const ucsbOrganizationFixtures = {
   oneOrganization:
   [
     {
@@ -35,4 +35,4 @@ const organizationFixtures = {
   ]
 };
 
-export { organizationFixtures };
+export { ucsbOrganizationFixtures };
