@@ -21,8 +21,8 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
 
     // Stryker disable next-line Regex
     const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
-    const url_regex = /.*\..*/i;
-    const email_regex = /[a-zA-Z0-9_\.]+@[a-zA-Z]+\.[a-zA-Z]+/i;
+    const url_regex = /[a-z0-9_-]+\.[a-z0-9_-]+/i;
+    const email_regex = /[a-z0-9_.]+@[a-z]+\.[a-z]+/i;
 
     return (
 
