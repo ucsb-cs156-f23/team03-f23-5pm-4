@@ -6,26 +6,26 @@ import { toast } from "react-toastify";
 
 export default function UCSBOrganizationCreatePage({storybook=false}) {
 
-  const objectToAxiosParams = (organization) => ({
-    url: "/api/organization/post",
+  const objectToAxiosParams = (ucsborganization) => ({
+    url: "/api/ucsborganization/post",
     method: "POST",
     params: {
-     orgCode: organization.orgCode,
-     orgTranslationShort: organization.orgTranslationShort,
-     orgTranslation: organization.orgTranslation,
-     inactive: organization.inactive
+     orgCode: ucsborganization.orgCode,
+     orgTranslationShort: ucsborganization.orgTranslationShort,
+     orgTranslation: ucsborganization.orgTranslation,
+     inactive: ucsborganization.inactive
     }
   });
 
-  const onSuccess = (organization) => {
-    toast(`New organization Created - orgCode: ${organization.orgCode} orgTranslationShort: ${organization.orgTranslationShort} orgTranslation: ${organization.orgTranslationt} inactive: ${organization.inactive}`);
+  const onSuccess = (ucsborganization) => {
+    toast(`New organization Created - orgCode: ${ucsborganization.orgCode} orgTranslationShort: ${ucsborganization.orgTranslationShort} orgTranslation: ${ucsborganization.orgTranslationt} inactive: ${ucsborganization.inactive}`);
   }
 
   const mutation = useBackendMutation(
     objectToAxiosParams,
      { onSuccess }, 
      // Stryker disable next-line all : hard to set up test for caching
-     ["/api/organization/all"] // mutation makes this key stale so that pages relying on it reload
+     ["/api/ucsborganization/all"] // mutation makes this key stale so that pages relying on it reload
      );
 
   const { isSuccess } = mutation
@@ -35,7 +35,7 @@ export default function UCSBOrganizationCreatePage({storybook=false}) {
   }
 
   if (isSuccess && !storybook) {
-    return <Navigate to="/organization" />
+    return <Navigate to="/ucsborganization" />
   }
 
   return (
