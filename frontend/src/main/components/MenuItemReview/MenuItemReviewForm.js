@@ -21,18 +21,19 @@ function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Crea
 
     return (
         <Form onSubmit={handleSubmit(submitAction)}>
+
             {initialContents && (
-                <Form.Group className="mb-3" >
-                    <Form.Label htmlFor="id">Id</Form.Label>
-                    <Form.Control
-                        data-testid={testIdPrefix + "-id"}
-                        id="id"
-                        type="text"
-                        {...register("id")}
-                        value={initialContents.id}
-                        disabled
-                    />
-                </Form.Group>
+                    <Form.Group className="mb-3" >
+                        <Form.Label htmlFor="id">MenuReview</Form.Label>
+                        <Form.Control
+                            data-testid={testIdPrefix + "-id"}
+                            id="id"
+                            type="text"
+                            {...register("id")}
+                            value={initialContents.id}
+                            disabled
+                        />
+                    </Form.Group>
             )}
 
             <Form.Group className="mb-3" >
@@ -60,10 +61,10 @@ function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Crea
                     isInvalid={Boolean(errors.reviewerEmail)}
                     {...register("reviewerEmail", {
                         required: "Reviewer email is required.",
-                        maxLength : {
-                            value: 30,
-                            message: "Max length 30 characters"
-                        }
+                        // maxLength : {
+                        //     value: 30,
+                        //     message: "Max length 30 characters"
+                        // }
                     })}
                 />
                 <Form.Control.Feedback type="invalid">
@@ -100,7 +101,7 @@ function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Crea
                     })}
                 />
                 <Form.Control.Feedback type="invalid">
-                    {errors.dateReviewed && 'Date reviewed is required. '}
+                    {errors.dateReviewed && 'Date reviewed is required.'}
                 </Form.Control.Feedback>
             </Form.Group>
 
