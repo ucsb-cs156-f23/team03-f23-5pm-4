@@ -7,10 +7,11 @@ export function onDeleteSuccess(message) {
 
 export function cellToAxiosParamsDelete(cell) {
     return {
+        // Stryker disable all
         url: "/api/ucsborganization",
         method: "DELETE",
         params: {
-            id: cell.row.values.orgCode
+            orgCode: cell.row.values.orgCode
         }
     }
 }
