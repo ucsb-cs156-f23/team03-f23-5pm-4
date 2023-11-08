@@ -1,4 +1,4 @@
-# STARTER-team03
+# team03-f23-5pm-4
 
 Instructions: <https://ucsb-cs156.github.io/f23/lab/team03.html>
 
@@ -17,7 +17,7 @@ TODO: Fill in this table with correct information.
 |---------------------------|--------------|-----------|
 | UCSBDiningCommonsMenuItem |    Arul      | ajs808    |
 | UCSBOrganization          |   Kendrick   |kendrick-lee|
-| RecommendationRequest     |              |           |
+| RecommendationRequest     |   Aditi      |aditiphatak|
 | MenuItemReview            |   Mitali     |  mitali-g |
 | HelpRequest               |     Justin   |francisc0leyva|
 | Articles                  |              |           |
