@@ -72,8 +72,8 @@ describe("RecommendationRequestForm tests", () => {
 
  
         await screen.findByText(/Date Requested must be in ISO format/);
-        expect(screen.queryByText(/Date Needed must be in ISO format/)).toBeInTheDocument();
-        expect(screen.queryByText(/Done must be true or false/)).toBeInTheDocument();
+        expect(screen.getByText(/Date Needed must be in ISO format/)).toBeInTheDocument();
+        expect(screen.getByText(/Done must be true or false/)).toBeInTheDocument();
 
        // expect(screen.getByText(/Date Needed must be in ISO format/)).toBeInTheDocument(); 
 
