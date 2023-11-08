@@ -118,6 +118,6 @@ describe("UserTable tests", () => {
   
     });
   
-  });
+});
   
   
