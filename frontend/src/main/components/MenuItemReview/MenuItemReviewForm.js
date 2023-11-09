@@ -18,7 +18,9 @@ function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Crea
 
     // Stryker disable next-line Regex
     const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
-
+    const stars_regex = /[1-5]/i; // Accepts from 1-5.  Close enough.
+    const email_regex = /[a-z0-9_.]+@[a-z]+\.[a-z]+/i;
+  
     return (
         <Form onSubmit={handleSubmit(submitAction)}>
 
@@ -60,11 +62,7 @@ function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Crea
                     type="text"
                     isInvalid={Boolean(errors.reviewerEmail)}
                     {...register("reviewerEmail", {
-                        required: "Reviewer email is required.",
-                        // maxLength : {
-                        //     value: 30,
-                        //     message: "Max length 30 characters"
-                        // }
+                        required: "Reviewer email is required.", pattern: email_regex
                     })}
                 />
                 <Form.Control.Feedback type="invalid">
@@ -81,7 +79,7 @@ function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Crea
                     type="text"
                     isInvalid={Boolean(errors.stars)}
                     {...register("stars", {
-                        required: "Stars is required.",
+                        required: "Stars is required.", pattern: stars_regex
                     })}
                 />
                 <Form.Control.Feedback type="invalid">
