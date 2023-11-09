@@ -29,7 +29,7 @@ describe("HelpRequestForm tests", () => {
 
         render(
             <Router  >
-                <HelpRequestForm initialContents={HelpRequestFixtures.oneHelpRequest} />
+                <HelpRequestForm initialContents={HelpRequestFixtures.oneHelpRequest[0]} />
             </Router>
         );
         await screen.findByTestId(/HelpRequestForm-id/);
