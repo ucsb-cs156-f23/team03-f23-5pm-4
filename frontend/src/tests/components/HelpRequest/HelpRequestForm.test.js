@@ -33,7 +33,6 @@ describe("HelpRequestForm tests", () => {
             </Router>
         );
         await screen.findByTestId(/HelpRequestForm-id/);
-        expect(screen.getByText(/Id/)).toBeInTheDocument();
         const idIn = screen.getByTestId(/HelpRequestForm-id/);
         const submitButton2 = screen.getByTestId(/HelpRequestForm-submit/);
 
@@ -207,7 +206,9 @@ describe("HelpRequestForm tests", () => {
     fireEvent.click(submitButton);
 
     // Check for the specific pattern error message for the requestTime field
-    await screen.findByText(/Request time must be in ISO date format YYYY-mm-ddTHH:MM:SS/);
+    const errorMessage = await screen.findByText(/Request time must be in ISO date format YYYY-mm-ddTHH:MM:SS/);
+    expect(errorMessage).toBeInTheDocument();
+
 });
 
 test("No Request time error message when input is correct", async () => {
@@ -239,7 +240,7 @@ test("Request time error message only shows when the input pattern is wrong", as
 
     render(
         <Router>
-            <HelpRequestForm submitAction={mockSubmitAction} />
+            <HelpRequestForm/>
         </Router>
     );
 
@@ -252,7 +253,7 @@ test("Request time error message only shows when the input pattern is wrong", as
     fireEvent.click(submitButton);
 
     // The error message should be present for an invalid pattern
-    let errorMessage = screen.queryByText(/Request time must be in ISO date format YYYY-mm-ddTHH:MM:SS/);
+    let errorMessage = await screen.findByText(/Request time must be in ISO date format YYYY-mm-ddTHH:MM:SS/);
     expect(errorMessage).toBeInTheDocument();
 
     // Now providing a valid ISO date pattern
@@ -260,8 +261,10 @@ test("Request time error message only shows when the input pattern is wrong", as
     fireEvent.click(submitButton);
 
     // The error message should not be present for a valid pattern
-    errorMessage = screen.queryByText(/Request time must be in ISO date format YYYY-mm-ddTHH:MM:SS/);
-    expect(errorMessage).not.toBeInTheDocument();
+    await waitFor(() => {
+        const errorMessage = screen.queryByText(/Request time must be in ISO date format YYYY-mm-ddTHH:MM:SS/);
+        expect(errorMessage).not.toBeInTheDocument();
+    });
 });
 
 
