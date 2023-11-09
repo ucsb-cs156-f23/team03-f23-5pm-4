@@ -236,7 +236,6 @@ test("No Request time error message when input is correct", async () => {
 });
 
 test("Request time error message only shows when the input pattern is wrong", async () => {
-    const mockSubmitAction = jest.fn();
 
     render(
         <Router>
