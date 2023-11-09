@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for pages/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemEditPage.js</title>
+    <title>Code coverage report for pages/UCSBOrganization/UCSBOrganizationEditPage.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">pages/UCSBDiningCommonsMenuItem</a> UCSBDiningCommonsMenuItemEditPage.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">pages/UCSBOrganization</a> UCSBOrganizationEditPage.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -131,21 +131,9 @@
 <a name='L66'></a><a href='#L66'>66</a>
 <a name='L67'></a><a href='#L67'>67</a>
 <a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -155,6 +143,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -200,50 +204,52 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
+&nbsp;
 import { useParams } from "react-router-dom";
-import UCSBDiningCommonsMenuItemForm from "main/components/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemForm";
+import UCSBOrganizationForm from 'main/components/UCSBOrganization/UCSBOrganizationForm';
 import { Navigate } from 'react-router-dom'
 import { useBackend, useBackendMutation } from "main/utils/useBackend";
 import { toast } from "react-toastify";
 &nbsp;
-export default function UCSBDiningCommonsMenuItemEditPage({storybook=false}) {
-    let { id } = useParams();
+export default function UCSBOrganizationEditPage({storybook=false}) {
+    let { orgCode } = useParams();
 &nbsp;
-    const { data: item, _error, _status } =
+    const { data: ucsborganization, _error, _status } =
         useBackend(
             // Stryker disable next-line all : don't test internal caching of React Query
-            [`/api/ucsbdiningcommonsmenuitems?id=${id}`],
+            [`/api/ucsborganization?orgCode=${orgCode}`],
             {  // Stryker disable next-line all : GET is the default, so mutating this to "" doesn't introduce a bug
                 method: "GET",
-                url: `/api/ucsbdiningcommonsmenuitems`,
+                url: `/api/ucsborganization`,
                 params: {
-                    id
+                    orgCode
                 }
             }
         );
 &nbsp;
-    const objectToAxiosPutParams = (item) =&gt; ({
-        url: "/api/ucsbdiningcommonsmenuitems",
+    const objectToAxiosPutParams = (ucsborganization) =&gt; ({
+        url: "/api/ucsborganization",
         method: "PUT",
         params: {
-            id: item.id,
+            orgCode: ucsborganization.orgCode,
         },
         data: {
-            name: item.name,
-            diningCommonsCode: item.diningCommonsCode,
-            station: item.station,
+            orgCode: ucsborganization.orgCode,
+            orgTranslationShort: ucsborganization.orgTranslationShort,
+            orgTranslation: ucsborganization.orgTranslation,
+            inactive: ucsborganization.inactive
         }
     });
 &nbsp;
-    const onSuccess = (item) =&gt; {
-        toast(`Item Updated - id: ${item.id} name: ${item.name} diningCommonsCode: ${item.diningCommonsCode} station: ${item.station}`);
+    const onSuccess = (ucsborganization) =&gt; {
+        toast(`UCSBOrganization Updated - orgCode: ${ucsborganization.orgCode} orgTranslationShort: ${ucsborganization.orgTranslationShort} orgTranslation: ${ucsborganization.orgTranslation} inactive: ${ucsborganization.inactive}`);
     }
 &nbsp;
     const mutation = useBackendMutation(
         objectToAxiosPutParams,
         { onSuccess },
         // Stryker disable next-line all : hard to set up test for caching
-        [`/api/ucsbdiningcommonsmenuitems?id=${id}`]
+        [`/api/ucsborganization?orgCode=${orgCode}`]
     );
 &nbsp;
     const { isSuccess } = mutation
@@ -253,21 +259,21 @@ export default function UCSBDiningCommonsMenuItemEditPage({storybook=false}) {
     }
 &nbsp;
     if (isSuccess &amp;&amp; !storybook) {
-        return &lt;Navigate to="/diningcommonsmenuitem" /&gt;
+        return &lt;Navigate to="/ucsborganization" /&gt;
     }
 &nbsp;
     return (
         &lt;BasicLayout&gt;
             &lt;div className="pt-2"&gt;
-                &lt;h1&gt;Edit Item&lt;/h1&gt;
+                &lt;h1&gt;Edit UCSBOrganization&lt;/h1&gt;
                 {
-                    item &amp;&amp; &lt;UCSBDiningCommonsMenuItemForm submitAction={onSubmit} buttonLabel={"Update"} initialContents={item} /&gt;
+                    ucsborganization &amp;&amp; &lt;UCSBOrganizationForm submitAction={onSubmit} buttonLabel={"Update"} initialContents={ucsborganization} /&gt;
                 }
             &lt;/div&gt;
         &lt;/BasicLayout&gt;
     )
-&nbsp;
-}</pre></td></tr></table></pre>
+}
+&nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
