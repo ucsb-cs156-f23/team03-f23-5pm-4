@@ -97,7 +97,7 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                         <Form.Control
                             data-testid="HelpRequestForm-requestTime"
                             id="requestTime"
-                            type="text"
+                            type="datetime-local"
                             isInvalid={Boolean(errors.requestTime)}
                             {...register("requestTime", { required: true, pattern: isodate_regex })}
                             />
