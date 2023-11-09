@@ -45,26 +45,24 @@ describe("HelpRequestForm tests", () => {
                 <HelpRequestForm />
             </Router>
         );
-        await screen.findByTestId("HelpRequestForm-requestTime");
-        const requesterTime = screen.getByTestId("HelpRequestForm-requestTime");
+        await screen.findByTestId("HelpRequestForm-requesterEmail");
         const requesterEmail = screen.getByTestId("HelpRequestForm-requesterEmail");
-        const submitButton = screen.getByTestId("HelpRequestForm-submit");
-
         const teamIdField = screen.getByTestId("HelpRequestForm-teamId");
         const tableOrBreakoutRoomField = screen.getByTestId("HelpRequestForm-tableOrBreakoutRoom");
-        const requestTimeField = screen.getByTestId("HelpRequestForm-requestTime");
+        const requesterTime = screen.getByTestId("HelpRequestForm-requestTime");
         const explanationField = screen.getByTestId("HelpRequestForm-explanation");
         const solvedField = screen.getByTestId("HelpRequestForm-solved");
+        const submitButton = screen.getByTestId("HelpRequestForm-submit");
         
-        fireEvent.change(requesterTime, { target: { value: 'bad-input' } });
+
         fireEvent.change(requesterEmail, { target: { value: 'bad-input' } });
         fireEvent.change(teamIdField, { target: { value: 'bad-input' } });
         fireEvent.change(tableOrBreakoutRoomField, { target: { value: 'bad-input' } });
-        fireEvent.change(requestTimeField, { target: { value: 'bad-input' } });
+        fireEvent.change(requesterTime, { target: { value: 'bad-input' } });
         fireEvent.change(explanationField, { target: { value: 'bad-input' } });
         fireEvent.change(solvedField, { target: { value: 'bad-input' } });
         fireEvent.click(submitButton);
-    });
+       });
 
     test("Correct Error messsages on missing input", async () => {
 

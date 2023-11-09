@@ -21,7 +21,6 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
     const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
 
     // Stryker disable next-line all
-    const email_regex = /[a-z0-9_.]+@[a-z]+\.[a-z]+/i;
     return (
 
         <Form onSubmit={handleSubmit(submitAction)}>
@@ -53,11 +52,10 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                             id="requesterEmail"
                             type="text"
                             isInvalid={Boolean(errors.requesterEmail)}
-                            {...register("requesterEmail", { required: true, pattern: email_regex})}
+                            {...register("requesterEmail", { required: "Requester email is required"})}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.requesterEmail && 'Requester email is required'}
-                            {errors.requesterEmail?.type === 'pattern' && 'Requester email must be in the form of an email address'}
+                            {errors.requesterEmail?.message}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
@@ -69,10 +67,10 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                             id="teamId"
                             type="text"
                             isInvalid={Boolean(errors.teamId)}
-                            {...register("teamId", { required: true})}
+                            {...register("teamId", { required: "teamId is required. "})}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.teamId && 'teamId is required. '}
+                            {errors.teamId?.message}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
@@ -84,10 +82,10 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                             id="tableOrBreakoutRoom"
                             type="text"
                             isInvalid={Boolean(errors.tableOrBreakoutRoom)}
-                            {...register("tableOrBreakoutRoom", { required: true})}
+                            {...register("tableOrBreakoutRoom", { required: "tableOrBreakoutRoom is required. "})}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.tableOrBreakoutRoom && 'tableOrBreakoutRoom is required. '}
+                            {errors.tableOrBreakoutRoom?.message}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
@@ -103,7 +101,6 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                             />
                             <Form.Control.Feedback type="invalid">
                                 {errors.requestTime && 'requestTime is required.'}
-                                {errors.requestTime?.type === 'pattern' && 'Request time must be in ISO date format YYYY-mm-ddTHH:MM:SS'}
                             </Form.Control.Feedback>
                         </Form.Group>
                 </Col>
@@ -115,10 +112,10 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                             id="explanation"
                             type="text"
                             isInvalid={Boolean(errors.explanation)}
-                            {...register("explanation", { required: true})}
+                            {...register("explanation", { required: "explanation is required."})}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.explanation && 'explanation is required. '}
+                            {errors.explanation?.message}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
@@ -130,10 +127,10 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                             id="solved"
                             type="text"
                             isInvalid={Boolean(errors.solved)}
-                            {...register("solved", { required: true})}
+                            {...register("solved", { required: "solved is required."})}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.solved && 'solved is required.'}
+                            {errors.solved?.message}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
