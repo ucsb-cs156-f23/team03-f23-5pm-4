@@ -1,4 +1,4 @@
-const HelpRequestFixtures = {
+const helpRequestFixtures = {
 
     oneHelpRequest: [
         {
@@ -47,4 +47,4 @@ const HelpRequestFixtures = {
 
 };
 
-export { HelpRequestFixtures };
+export { helpRequestFixtures };
