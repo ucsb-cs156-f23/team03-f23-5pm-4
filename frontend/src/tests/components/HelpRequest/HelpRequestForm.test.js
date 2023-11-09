@@ -2,6 +2,7 @@ import { render, waitFor, fireEvent, screen } from "@testing-library/react";
 import HelpRequestForm from "main/components/HelpRequest/HelpRequestForm";
 import { HelpRequestFixtures } from "fixtures/helpRequestFixtures";
 import { BrowserRouter as Router } from "react-router-dom";
+import { f } from "msw/lib/glossary-de6278a9";
 
 const mockedNavigate = jest.fn();
 
@@ -47,12 +48,15 @@ describe("HelpRequestForm tests", () => {
         );
         await screen.findByTestId("HelpRequestForm-requestTime");
         const requesterTime = screen.getByTestId("HelpRequestForm-requestTime");
+        const requesterEmail = screen.getByTestId("HelpRequestForm-requesterEmail");
         const submitButton = screen.getByTestId("HelpRequestForm-submit");
         
         fireEvent.change(requesterTime, { target: { value: 'bad-input' } });
+        fireEvent.change(requesterEmail, { target: { value: 'bad-input' } });
         fireEvent.click(submitButton);
         
         await screen.findByText(/Request time must be in ISO date format YYYY-mm-ddTHH:MM:SS/);
+        await screen.findByText(/Requester email must be in the form of an email address/);
     });
 
     test("Correct Error messsages on missing input", async () => {
