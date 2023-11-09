@@ -162,11 +162,8 @@ describe("UserTable tests", () => {
       </QueryClientProvider>
     );
 
-<<<<<<< HEAD
-=======
     const expectedHeaders = ["orgCode", "orgTranslationShort", "orgTranslation", "inactive"];
     const expectedFields = ["orgCode", "orgTranslationShort", "orgTranslation", "inactive"];
->>>>>>> db0c1c90 (Added Table for UCSB Organization)
     const testId = "UCSBOrganizationTable";
 
     // assert - check that the expected content is rendered
