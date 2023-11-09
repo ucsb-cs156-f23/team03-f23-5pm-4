@@ -68,7 +68,7 @@ describe("UserTable tests", () => {
     );
 
     const expectedHeaders = ["id", "Title", "URL", "Explanation", "Email", "Date Added"];
-        const expectedFields = ["id", "title", "url", "explanation", "email", "dateAdded"];
+    const expectedFields = ["id", "title", "url", "explanation", "email", "dateAdded"];
     const testId = "ArticlesTable";
 
     expectedHeaders.forEach((headerText) => {
