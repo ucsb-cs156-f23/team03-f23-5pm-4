@@ -45,7 +45,6 @@ export default function RecommendationRequestCreatePage({storybook=false}) {
       <div className="pt-2">
           <h1>Create New Recommendation Request</h1>
           <RecommendationForm submitAction={onSubmit} />
-
       </div>
     </BasicLayout>
   )
