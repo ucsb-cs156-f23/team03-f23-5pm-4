@@ -1,42 +1,44 @@
-const HelpRequestFixtures = {
+const helpRequestFixtures = {
 
-    oneHelpRequest: {
-        "id": 1,
+    oneHelpRequest: [
+        {
+        "id": "1",
         "requesterEmail": "student@ucsb.edu",
         "teamId": "one",
         "tableOrBreakoutRoom": "table",
         "requestTime": "2021-10-01T12:00:00",
         "explanation": "I need help with my homework",
-        "solved": false
-    },
+        "solved": "false"
+    }
+],
     threeHelpRequests: [
         {
-            "id": 1,
+            "id": 2,
             "requesterEmail": "another@ucsb.edu",
             "teamId": "one",
             "tableOrBreakoutRoom": "table",
             "requestTime": "2021-10-01T12:00:00",
             "explanation": "I need help with my homework",
-            "solved": false
+            "solved": "false"
 
         },
         {
-            "id": 2,
+            "id": 3,
             "requesterEmail": "joe@ucsb.edu",
             "teamId": "two",
             "tableOrBreakoutRoom": "breakout",
             "requestTime": "2021-10-01T12:00:22",
             "explanation": "I need help with my OTHER homework",
-            "solved": true
+            "solved": "true"
         },
         {
-            "id": 3,
+            "id": 4,
             "requesterEmail": "guacho@ucsb.edu",
             "teamId": "three",
             "tableOrBreakoutRoom": "breakout",
             "requestTime": "2021-10-01T12:00:33",
             "explanation": "I need help with my OTHER OTHER homework",
-            "solved": false
+            "solved": "false"
         }
     ]
 
@@ -45,4 +47,4 @@ const HelpRequestFixtures = {
 
 };
 
-export { HelpRequestFixtures };
+export { helpRequestFixtures };
