@@ -35,7 +35,6 @@ import RecommendationRequestIndexPage from "main/pages/RecommendationRequest/Rec
 import RecommendationRequestCreatePage from "main/pages/RecommendationRequest/RecommendationRequestCreatePage";
 import RecommendationRequestEditPage from "main/pages/RecommendationRequest/RecommendationRequestEditPage";
 
-
 import { hasRole, useCurrentUser } from "main/utils/currentUser";
 
 import "bootstrap/dist/css/bootstrap.css";
@@ -149,19 +148,17 @@ function App() {
           )
         }
         {
-          hasRole(currentUser, "ROLE_USER") && (
+          hasRole(currentUser, "ROLE_ADMIN") && (
             <>
-              <Route exact path="/ucsborganization" element={<UCSBOrganizationIndexPage />} />
+              <Route exact path="/menuitemreview/edit/:id" element={<MenuItemReviewEditPage />} />
+              <Route exact path="/menuitemreview/create" element={<MenuItemReviewCreatePage />} />
             </>
           )
         }
         {
-          hasRole(currentUser, "ROLE_ADMIN") && (
+          hasRole(currentUser, "ROLE_USER") && (
             <>
-
-
-              <Route exact path="/menuitemreview/edit/:id" element={<MenuItemReviewEditPage />} />
-              <Route exact path="/menuitemreview/create" element={<MenuItemReviewCreatePage />} />
+              <Route exact path="/ucsborganization" element={<UCSBOrganizationIndexPage />} />
             </>
           )
         }
