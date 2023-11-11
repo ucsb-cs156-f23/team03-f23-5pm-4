@@ -113,8 +113,10 @@ describe("MenuItemReviewForm tests", () => {
 
         await waitFor(() => expect(mockSubmitAction).toHaveBeenCalled());
 
-        // expect(screen.queryByText(/QuarterYYYYQ must be in the format YYYYQ/)).not.toBeInTheDocument();
+        expect(screen.queryByText(/QuarterYYYYQ must be in the format YYYYQ/)).not.toBeInTheDocument();
         expect(screen.queryByText(/Date reviewed must be in ISO format/)).not.toBeInTheDocument();
+        expect(screen.queryByText(/Stars must be in 1-5 format/)).not.toBeInTheDocument();
+        expect(screen.queryByText(/Email must be in email format/)).not.toBeInTheDocument();
     });
 
     test("that navigate(-1) is called when Cancel is clicked", async () => {
