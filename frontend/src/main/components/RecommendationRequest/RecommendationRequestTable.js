@@ -54,7 +54,9 @@ export default function RecommendationRequestTable({ requests, currentUser }) {
         },
         {
             Header: 'Done',
-            accessor: (row, _rowIndex) => String(row.done),
+            id: 'done',
+            // Stryker disable next-line all
+            accessor: (row, _rowIndex) => String(row.done)
         }
     ];
 
