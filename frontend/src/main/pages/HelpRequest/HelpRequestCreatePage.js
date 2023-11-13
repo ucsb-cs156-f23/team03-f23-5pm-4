@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 export default function HelpRequestCreatePage({storybook=false}) {
 
   const objectToAxiosParams = (helpRequest) => ({
-    url: "/api/helprequests/post",
+    url: "/api/HelpRequests/post",
     method: "POST",
     params: {
       requesterEmail: helpRequest.requesterEmail,
@@ -37,7 +37,7 @@ export default function HelpRequestCreatePage({storybook=false}) {
   }
 
   if (isSuccess && !storybook) {
-    return <Navigate to="/helprequests" />
+    return <Navigate to="/helprequest" />
   }
 
   return (
@@ -46,6 +46,7 @@ export default function HelpRequestCreatePage({storybook=false}) {
         <h1>Create New HelpRequest</h1>
 
         <HelpRequestForm submitAction={onSubmit} />
+
 
       </div>
     </BasicLayout>

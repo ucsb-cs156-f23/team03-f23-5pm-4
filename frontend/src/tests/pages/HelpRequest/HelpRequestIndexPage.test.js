@@ -22,6 +22,7 @@ jest.mock('react-toastify', () => {
     };
 });
 
+
 describe("HelpRequestIndexPage tests", () => {
 
     const axiosMock = new AxiosMockAdapter(axios);
@@ -46,7 +47,7 @@ describe("HelpRequestIndexPage tests", () => {
         // arrange
         setupAdminUser();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/helprequests/all").reply(200, []);
+        axiosMock.onGet("/api/HelpRequests/all").reply(200, []);
 
         // act
         render(
@@ -62,7 +63,7 @@ describe("HelpRequestIndexPage tests", () => {
             expect(screen.getByText(/Create HelpRequest/)).toBeInTheDocument();
         });
         const button = screen.getByText(/Create HelpRequest/);
-        expect(button).toHaveAttribute("href", "/helprequests/create");
+        expect(button).toHaveAttribute("href", "/helprequest/create");
         expect(button).toHaveAttribute("style", "float: right;");
     });
 
@@ -71,7 +72,8 @@ describe("HelpRequestIndexPage tests", () => {
         // arrange
         setupUserOnly();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/helprequests/all").reply(200, helpRequestFixtures.threeHelpRequests);
+        axiosMock.onGet("/api/HelpRequests/all").reply(200, helpRequestFixtures.threeHelpRequests);
+
 
         // act
         render(
@@ -97,7 +99,7 @@ describe("HelpRequestIndexPage tests", () => {
         // arrange
         setupUserOnly();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/helprequests/all").timeout();
+        axiosMock.onGet("/api/HelpRequests/all").timeout();
         const restoreConsole = mockConsole();
 
         // act
@@ -113,7 +115,7 @@ describe("HelpRequestIndexPage tests", () => {
         await waitFor(() => { expect(axiosMock.history.get.length).toBeGreaterThanOrEqual(1); });
 
         const errorMessage = console.error.mock.calls[0][0];
-        expect(errorMessage).toMatch("Error communicating with backend via GET on /api/helprequests/all");
+        expect(errorMessage).toMatch("Error communicating with backend via GET on /api/HelpRequests/all");
         restoreConsole();
 
         expect(screen.queryByTestId(`${testId}-cell-row-0-col-id`)).not.toBeInTheDocument();
@@ -123,8 +125,8 @@ describe("HelpRequestIndexPage tests", () => {
         // arrange
         setupAdminUser();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/helprequests/all").reply(200, helpRequestFixtures.threeHelpRequests);
-        axiosMock.onDelete("/api/helprequests").reply(200, "HelpRequest with id 2 was deleted");
+        axiosMock.onGet("/api/HelpRequests/all").reply(200, helpRequestFixtures.threeHelpRequests);
+        axiosMock.onDelete("/api/HelpRequests").reply(200, "HelpRequest with id 2 was deleted");
 
         // act
         render(
