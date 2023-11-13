@@ -64,7 +64,7 @@ describe("HelpRequestForm tests", () => {
         fireEvent.change(solvedField, { target: { value: 'bad-input' } });
         fireEvent.click(submitButton);
 
-        // await screen.findByText(/requesterEmail must be in the format ____/);
+        await screen.findByText(/Solved must be true or false/);
     });
 
     test("Correct Error messsages on missing input", async () => {
