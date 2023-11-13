@@ -22,6 +22,8 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
     // Stryker disable next-line Regex
     const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
 
+    const solved_regex = /(true|false)/i
+
     return (
 
         <Form onSubmit={handleSubmit(submitAction)}>
@@ -147,20 +149,22 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
              <Row>
                 <Col>
                     <Form.Group className="mb-3" >
-                        <Form.Label htmlFor="solved">Solved</Form.Label>
+                        <Form.Label htmlFor="solved">solved</Form.Label>
                         <Form.Control
                             data-testid="HelpRequestForm-solved"
                             id="solved"
                             type="text"
                             isInvalid={Boolean(errors.solved)}
                             {...register("solved", {
-                                required: "Solved is required."
+                                required: "Solved is required.", pattern: solved_regex
                             })}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.solved?.message}
+                            {errors.solved?.message} {'Solved must be true or false'}
                         </Form.Control.Feedback>
                     </Form.Group>
+
+
                 </Col>
             </Row>
 

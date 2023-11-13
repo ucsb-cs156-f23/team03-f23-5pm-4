@@ -33,6 +33,7 @@ describe("HelpRequestCreatePage tests", () => {
     const axiosMock =new AxiosMockAdapter(axios);
 
     beforeEach(() => {
+
         axiosMock.reset();
         axiosMock.resetHistory();
         axiosMock.onGet("/api/currentUser").reply(200, apiCurrentUserFixtures.userOnly);
@@ -63,7 +64,8 @@ describe("HelpRequestCreatePage tests", () => {
             solved: "true"
         };
 
-        axiosMock.onPost("/api/helprequests/post").reply( 202, helpRequest );
+        axiosMock.onPost("/api/HelpRequests/post").reply( 202, helpRequest );
+
 
         render(
             <QueryClientProvider client={queryClient}>
@@ -109,9 +111,8 @@ describe("HelpRequestCreatePage tests", () => {
         });
 
         expect(mockToast).toBeCalledWith("New helpRequest Created - id: 1 requesterEmail: cgaucho@ucsb.edu");
-        expect(mockNavigate).toBeCalledWith({ "to": "/helprequests" });
+        expect(mockNavigate).toBeCalledWith({ "to": "/helprequest" });
     });
-
 
 });
 
