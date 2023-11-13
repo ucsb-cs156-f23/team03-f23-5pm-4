@@ -1,7 +1,7 @@
 import { fireEvent, render, waitFor, screen } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
-import HelpRequestsEditPage from "main/pages/HelpRequest/HelpRequestEditPage";
+import HelpRequestEditPage from "main/pages/HelpRequest/HelpRequestEditPage";
 
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
@@ -33,7 +33,7 @@ jest.mock('react-router-dom', () => {
     };
 });
 
-describe("HelpRequestsEditPage tests", () => {
+describe("HelpRequestEditPage tests", () => {
 
     describe("when the backend doesn't return data", () => {
 
@@ -44,7 +44,7 @@ describe("HelpRequestsEditPage tests", () => {
             axiosMock.resetHistory();
             axiosMock.onGet("/api/currentUser").reply(200, apiCurrentUserFixtures.userOnly);
             axiosMock.onGet("/api/systemInfo").reply(200, systemInfoFixtures.showingNeither);
-            axiosMock.onGet("/api/HelpRequests", { params: { id: 17 } }).timeout();
+            axiosMock.onGet("/api/helprequest", { params: { id: 17 } }).timeout();
         });
 
         const queryClient = new QueryClient();
@@ -55,12 +55,12 @@ describe("HelpRequestsEditPage tests", () => {
             render(
                 <QueryClientProvider client={queryClient}>
                     <MemoryRouter>
-                        <HelpRequestsEditPage />
+                        <HelpRequestEditPage />
                     </MemoryRouter>
                 </QueryClientProvider>
             );
             await screen.findByText("Edit Help Requests");
-            expect(screen.queryByTestId("HelpRequestsForm-requesterEmail")).not.toBeInTheDocument();
+            expect(screen.queryByTestId("HelpRequestForm-requesterEmail")).not.toBeInTheDocument();
             restoreConsole();
         });
     });
@@ -74,7 +74,7 @@ describe("HelpRequestsEditPage tests", () => {
             axiosMock.resetHistory();
             axiosMock.onGet("/api/currentUser").reply(200, apiCurrentUserFixtures.userOnly);
             axiosMock.onGet("/api/systemInfo").reply(200, systemInfoFixtures.showingNeither);
-            axiosMock.onGet("/api/HelpRequests", { params: { id: 17 } }).reply(200, {
+            axiosMock.onGet("/api/helprequest", { params: { id: 17 } }).reply(200, {
                 id: 17,
                 requesterEmail: "example@ucsb.edu",
                 teamId: "f23-6pm-1",
@@ -83,7 +83,7 @@ describe("HelpRequestsEditPage tests", () => {
                 explanation: "sample",
                 solved: "false"
             });
-            axiosMock.onPut('/api/HelpRequests').reply(200, {
+            axiosMock.onPut('/api/helprequest').reply(200, {
                 id: 17,
                 requesterEmail: "example1@ucsb.edu",
                 teamId: "f23-6pm-2",
@@ -99,7 +99,7 @@ describe("HelpRequestsEditPage tests", () => {
             render(
                 <QueryClientProvider client={queryClient}>
                     <MemoryRouter>
-                        <HelpRequestsEditPage />
+                        <HelpRequestEditPage />
                     </MemoryRouter>
                 </QueryClientProvider>
             );
@@ -110,7 +110,7 @@ describe("HelpRequestsEditPage tests", () => {
             render(
                 <QueryClientProvider client={queryClient}>
                     <MemoryRouter>
-                        <HelpRequestsEditPage />
+                        <HelpRequestEditPage />
                     </MemoryRouter>
                 </QueryClientProvider>
             );
@@ -141,7 +141,7 @@ describe("HelpRequestsEditPage tests", () => {
             render(
                 <QueryClientProvider client={queryClient}>
                     <MemoryRouter>
-                        <HelpRequestsEditPage />
+                        <HelpRequestEditPage />
                     </MemoryRouter>
                 </QueryClientProvider>
             );

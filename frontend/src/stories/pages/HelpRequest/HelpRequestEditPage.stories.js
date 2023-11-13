@@ -5,14 +5,14 @@ import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import { helpRequestFixtures } from "fixtures/helpRequestFixtures";
 import { rest } from "msw";
 
-import HelpRequestsEditPage from "main/pages/HelpRequest/HelpRequestEditPage";
+import HelpRequestEditPage from "main/pages/HelpRequest/HelpRequestEditPage";
 
 export default {
-    title: 'pages/HelpRequest/HelpRequestsEditPage',
-    component: HelpRequestsEditPage
+    title: 'pages/HelpRequest/HelpRequestEditPage',
+    component: HelpRequestEditPage
 };
 
-const Template = () => <HelpRequestsEditPage storybook={true}/>;
+const Template = () => <HelpRequestEditPage storybook={true}/>;
 
 export const Default = Template.bind({});
 Default.parameters = {
@@ -23,10 +23,10 @@ Default.parameters = {
         rest.get('/api/systemInfo', (_req, res, ctx) => {
             return res(ctx.json(systemInfoFixtures.showingNeither));
         }),
-        rest.get('/api/HelpRequests', (_req, res, ctx) => {
+        rest.get('/api/helprequest', (_req, res, ctx) => {
             return res(ctx.json(helpRequestFixtures.threeHelpRequests[0]));
         }),
-        rest.put('/api/HelpRequests', async (req, res, ctx) => {
+        rest.put('/api/helprequest', async (req, res, ctx) => {
             var reqBody = await req.text();
             window.alert("PUT: " + req.url + " and body: " + reqBody);
             return res(ctx.status(200),ctx.json({}));
