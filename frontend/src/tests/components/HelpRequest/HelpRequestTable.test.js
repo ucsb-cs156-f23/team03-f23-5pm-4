@@ -18,7 +18,7 @@ describe("HelpRequestTable tests", () => {
 
   const expectedHeaders = ["id", "RequesterEmail", "TeamId", "TableOrBreakoutRoom", "RequestTime", "Explanation", "Solved"];
   const expectedFields = ["id", "requesterEmail", "teamId", "tableOrBreakoutRoom", "requestTime", "explanation", "solved"];
-  const testId = "HelpRequestsTable";
+  const testId = "HelpRequestTable";
 
   test("renders empty table correctly", () => {
     

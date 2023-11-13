@@ -1,11 +1,11 @@
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
 import { useParams } from "react-router-dom";
-import HelpRequestsForm from "main/components/HelpRequest/HelpRequestForm";
+import HelpRequestForm from "main/components/HelpRequest/HelpRequestForm";
 import { Navigate } from 'react-router-dom'
 import { useBackend, useBackendMutation } from "main/utils/useBackend";
 import { toast } from "react-toastify";
 
-export default function HelpRequestsEditPage({storybook=false}) {
+export default function HelpRequestEditPage({storybook=false}) {
   let { id } = useParams();
 
   const { data: helpRequest, _error, _status } =
@@ -14,7 +14,7 @@ export default function HelpRequestsEditPage({storybook=false}) {
       [`/api/HelpRequest?id=${id}`],
       {  // Stryker disable next-line all : GET is the default, so changing this to "" doesn't introduce a bug
         method: "GET",
-        url: `/api/HelpRequests`,
+        url: `/api/helprequest`,
         params: {
           id
         }
@@ -23,7 +23,7 @@ export default function HelpRequestsEditPage({storybook=false}) {
 
 
   const objectToAxiosPutParams = (helpRequest) => ({
-    url: "/api/HelpRequests",
+    url: "/api/helprequest",
     method: "PUT",
     params: {
       id: helpRequest.id,
@@ -64,7 +64,7 @@ export default function HelpRequestsEditPage({storybook=false}) {
       <div className="pt-2">
         <h1>Edit Help Requests</h1>
         {
-          helpRequest && <HelpRequestsForm initialContents={helpRequest} submitAction={onSubmit} buttonLabel="Update" />
+          helpRequest && <HelpRequestForm initialContents={helpRequest} submitAction={onSubmit} buttonLabel="Update" />
         }
       </div>
     </BasicLayout>

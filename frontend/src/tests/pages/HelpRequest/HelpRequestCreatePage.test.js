@@ -64,7 +64,7 @@ describe("HelpRequestCreatePage tests", () => {
             solved: "true"
         };
 
-        axiosMock.onPost("/api/HelpRequests/post").reply( 202, helpRequest );
+        axiosMock.onPost("/api/helprequest/post").reply( 202, helpRequest );
 
 
         render(
