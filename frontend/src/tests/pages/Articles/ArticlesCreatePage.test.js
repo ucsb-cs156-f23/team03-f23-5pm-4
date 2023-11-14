@@ -59,7 +59,7 @@ describe("ArticlesCreatePage tests", () => {
             url: "team03.dokku-04.cs.ucsb.edu",
             explanation: "helpful for creating articles",
             email: "katytsao@ucsb.edu",
-            dateAdded: "2023-11-08T00:00"
+            dateAdded: "2023-11-08T12:00:00"
         };
 
         axiosMock.onPost("/api/articles/post").reply( 202, article );
@@ -87,7 +87,7 @@ describe("ArticlesCreatePage tests", () => {
         fireEvent.change(urlField, { target: { value: 'team03.dokku-04.cs.ucsb.edu' } });
         fireEvent.change(explanationField, { target: { value: 'helpful for creating articles' } });
         fireEvent.change(emailField, { target: { value: 'katytsao@ucsb.edu' } });
-        fireEvent.change(dateAddedField, { target: { value: '2023-11-08T00:00' } });
+        fireEvent.change(dateAddedField, { target: { value: '2023-11-08T12:00' } });
 
         expect(submitButton).toBeInTheDocument();
 
@@ -100,7 +100,7 @@ describe("ArticlesCreatePage tests", () => {
             "url": "team03.dokku-04.cs.ucsb.edu",
             "explanation": "helpful for creating articles",
             "email": "katytsao@ucsb.edu",
-            "dateAdded": "2023-11-08T00:00"
+            "dateAdded": "2023-11-08T12:00"
         });
 
         expect(mockToast).toBeCalledWith("New Article Created - id: 17 title: How to Use the Create Page");

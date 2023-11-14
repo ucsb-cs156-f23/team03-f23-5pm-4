@@ -11,7 +11,7 @@ jest.mock('react-router-dom', () => ({
 }));
 
 
-describe("UCSBOrganiztionForm tests", () => {
+describe("UCSBOrganizationForm tests", () => {
 
     test("renders correctly", async () => {
 

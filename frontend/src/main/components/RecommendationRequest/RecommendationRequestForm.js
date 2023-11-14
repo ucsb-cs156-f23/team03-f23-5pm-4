@@ -31,7 +31,7 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
 
             {initialContents && (
                 <Form.Group className="mb-3" >
-                    <Form.Label htmlFor="id">Id</Form.Label>
+                    <Form.Label htmlFor="id">id</Form.Label>
                     <Form.Control
                         data-testid={testIdPrefix + "-id"}
                         id="id"

@@ -1,20 +1,20 @@
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
 import { useParams } from "react-router-dom";
-import ArticlesForm from "main/components/Articles/ArticlesForm";
+import RecommendationRequestForm from "main/components/RecommendationRequest/RecommendationRequestForm";
 import { Navigate } from 'react-router-dom'
 import { useBackend, useBackendMutation } from "main/utils/useBackend";
 import { toast } from "react-toastify";
 
-export default function ArticlesEditPage({storybook=false}) {
+export default function RecommendationRequestEditPage({storybook=false}) {
   let { id } = useParams();
 
-  const { data: article, _error, _status } =
+  const { data: request, _error, _status } =
     useBackend(
       // Stryker disable next-line all : don't test internal caching of React Query
-      [`/api/articles?id=${id}`],
+      [`/api/recommendationrequest?id=${id}`],
       {  // Stryker disable next-line all : GET is the default, so changing this to "" doesn't introduce a bug
         method: "GET",
-        url: `/api/articles`,
+        url: `/api/recommendationrequest`,
         params: {
           id
         }
@@ -22,30 +22,31 @@ export default function ArticlesEditPage({storybook=false}) {
     );
 
 
-  const objectToAxiosPutParams = (article) => ({
-    url: "/api/articles",
+  const objectToAxiosPutParams = (request) => ({
+    url: "/api/recommendationrequest",
     method: "PUT",
     params: {
-      id: article.id,
+      id: request.id,
     },
     data: {
-      title: article.title,
-      url: article.url,
-      explanation: article.explanation,
-      email: article.email,
-      dateAdded: article.dateAdded
+      requesterEmail: request.requesterEmail,
+      professorEmail: request.professorEmail,
+      explanation: request.explanation,
+      dateRequested: request.dateRequested,
+      dateNeeded: request.dateNeeded,
+      done: request.done
     }
   });
 
-  const onSuccess = (article) => {
-    toast(`Article Updated - id: ${article.id} title: ${article.title}`);
+  const onSuccess = (request) => {
+    toast(`Recommendation request Updated - id: ${request.id}`);
   }
 
   const mutation = useBackendMutation(
     objectToAxiosPutParams,
     { onSuccess },
     // Stryker disable next-line all : hard to set up test for caching
-    [`/api/articles?id=${id}`]
+    [`/api/recommendationrequest?id=${id}`]
   );
 
   const { isSuccess } = mutation
@@ -55,18 +56,17 @@ export default function ArticlesEditPage({storybook=false}) {
   }
 
   if (isSuccess && !storybook) {
-    return <Navigate to="/articles" />
+    return <Navigate to="/recommendationrequest" />
   }
 
   return (
     <BasicLayout>
       <div className="pt-2">
-        <h1>Edit Article</h1>
+        <h1>Edit Recommendation Request</h1>
         {
-          article && <ArticlesForm initialContents={article} submitAction={onSubmit} buttonLabel="Update" />
+          request && <RecommendationRequestForm initialContents={request} submitAction={onSubmit} buttonLabel="Update" />
         }
       </div>
     </BasicLayout>
   )
 }
-
